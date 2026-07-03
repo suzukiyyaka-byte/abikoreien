@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>我孫子霊園 ABIKO CEMETERY｜田園風景に囲まれた緑豊かな霊園</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: "Yu Gothic", "Helvetica Neue", sans-serif; margin:0; padding:0; color:#333; line-height:1.6; }
+    
+    /* ヘッダー・ロゴデザイン */
+    header.fv {
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('fv_abiko.jpg') center/cover no-repeat;
+      padding: 100px 20px;
+      text-align: center;
+      color: white;
+    }
+    .fv-title { margin: 0 0 20px 0; }
+    .fv-title .main-text { 
+      font-size: 3.5rem; font-weight: bold; display: block;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+    .fv-title .sub-text { 
+      font-size: 1.2rem; letter-spacing: 0.3em; display: block; margin-top: 10px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+    
+    /* コピーの可読性向上 */
+    .copy-box { max-width: 640px; margin: 0 auto 30px auto; }
+    .copy-text { 
+      font-weight: bold; background: rgba(0,0,0,0.6); padding: 20px; 
+      border-radius: 8px; display: inline-block; margin: 0;
+    }
+
+    /* セクションデザイン */
+    .section { padding: 60px 20px; max-width: 900px; margin: auto; text-align: center; }
+    
+    /* 霊園の特徴セクション */
+    .bg-light-green { background-color: #f4f7f4; }
+    .feature-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .feature-text { flex: 1; }
+    .feature-text p { margin: 0; font-size: 1.05rem; text-align: justify; }
+    .feature-image { flex: 1; text-align: center; }
+    .feature-image img { width: 100%; max-width: 450px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+    /* コラム風デザイン */
+    .column-section {
+      max-width: 800px;
+      margin: 40px auto 60px auto;
+      padding: 35px 30px;
+      background-color: #fafafa;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      text-align: left;
+    }
+    .column-title {
+      font-size: 1.4rem;
+      color: #2a5c2a;
+      margin-top: 0;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #2a5c2a;
+      padding-bottom: 8px;
+    }
+    .column-text { font-size: 1rem; margin-bottom: 15px; text-align: justify; }
+    .column-link { text-align: right; font-size: 0.9rem; }
+    .column-link a { color: #2a5c2a; font-weight: bold; text-decoration: underline; }
+
+    /* ゆとり墓所 画像レイアウト */
+    .main-yutori-image { margin-bottom: 20px; }
+    .main-yutori-image img { width: 100%; max-width: 600px; border-radius: 8px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .sub-yutori-images { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+    .sub-yutori-images img { width: 45%; max-width: 290px; border-radius: 8px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    
+    /* 画像ギミック */
+    .gimmick-image { transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+    .gimmick-image:hover { transform: scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    
+    /* 地図・埋め込み */
+    .map-embed iframe { width: 100%; max-width: 600px; height: 450px; border: 0; margin-top: 20px; }
+    
+    /* 赤帯受付案内 */
+    .reception-notice {
+      max-width: 600px;
+      margin: 25px auto 0 auto;
+      padding: 20px;
+      background-color: #d9383a;
+      color: #ffffff;
+      border-radius: 6px;
+      text-align: left;
+      font-weight: bold;
+      font-size: 1.05rem;
+      box-shadow: 0 4px 12px rgba(217, 56, 58, 0.3);
+    }
+    .reception-notice p { margin: 0; text-align: justify; }
+
+    /* ボタン・その他 */
+    .btn-primary { 
+      display: inline-block; background: #2a5c2a; color: white; padding: 15px 30px; 
+      border-radius: 6px; text-decoration: none; font-size: 18px; font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .btn-primary:hover { background: #1e421e; }
+    footer { text-align:center; padding:20px; background:#f5f5f5; }
+
+    /* レスポンシブ対応（スマホ向け） */
+    @media (max-width: 768px) {
+      .fv-title .main-text { font-size: 2.5rem; }
+      .fv-title .sub-text { font-size: 1rem; }
+      .sub-yutori-images { flex-direction: column; align-items: center; }
+      .sub-yutori-images img { width: 100%; max-width: 600px; }
+      
+      .feature-container { flex-direction: column; gap: 20px; }
+      .feature-text p { font-size: 1rem; }
+      
+      .column-section { margin: 30px 20px 40px 20px; padding: 25px 20px; }
+      .reception-notice { margin: 20px 10px 0 10px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="fv">
+    <h1 class="fv-title">
+      <span class="main-text">我孫子霊園</span>
+      <span class="sub-text">ABIKO CEMETERY</span>
+    </h1>
+    <div class="copy-box">
+      <p class="copy-text">
+        心が深呼吸するような静けさ。<br>
+        広々とした園内に、やわらかな陽光と緑が広がる場所。<br>
+        我孫子霊園は、訪れる方が自然と落ち着ける、穏やかな時間を提供します。
+      </p>
+    </div>
+    <a href="#contact" class="btn-primary">現地案内会の予約・お問い合わせ</a>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2>ゆとり墓所区画 1.5㎡</h2>
+      <div class="main-yutori-image">
+        <img src="yutori_165.jpg" class="gimmick-image" alt="ゆとり墓所区画 1.5㎡ 165.5万円">
+      </div>
+      <div class="sub-yutori-images">
+        <img src="cemetery_green.jpg" class="gimmick-image" alt="緑豊かな霊園">
+        <img src="cemetery_rows.jpg" class="gimmick-image" alt="整然と並ぶ墓石">
+      </div>
+      <p style="margin-top:20px; font-size: 1.2rem;"><strong>165.5万円（税込）</strong><br><span style="font-size: 0.9rem; color: #555;">墓石工事代・永代使用料・基本彫刻代・消費税すべて込み</span></p>
+    </section>
+
+    <section class="section">
+      <h2>区画案内</h2>
+      <img src="blocks_map.jpg" alt="区画図" style="width:100%; max-width:600px; border-radius:8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    </section>
+
+    <div class="bg-light-green">
+      <section class="section" style="padding: 60px 20px;">
+        <div class="feature-container">
+          <div class="feature-text">
+            <p>
+              自然豊かな高台に広がる霊園は、四季の風が心地よく抜ける開放的な空間。陽当たりの良い区画が続き、ゆったりとした参道と丁寧に手入れされた植栽が、訪れるたびに清々しさを感じさせます。<br><br>
+              管理事務所の対応も行き届き、供花やお線香の購入もできるため、手ぶらで気軽にお参りが可能。静けさと便利さが両立した立地で、家族が無理なく通い続けられる“環境の良い霊園”として選ばれています。
+            </p>
+          </div>
+          <div class="feature-image">
+            <img src="seasons.png" alt="四季のイメージ画像" class="gimmick-image">
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="column-section">
+      <h3 class="column-title">【コラム】お墓の引っ越し「改葬」について</h3>
+      <p class="column-text">
+        改葬（かいそう）は、遠方や管理の負担などの理由で、今あるお墓を別の霊園へ移す手続きです。行政の許可が必要ですが、環境の良い場所へ移せるため、将来の供養がぐっとしやすくなるのが魅力。家族の負担軽減やアクセス改善につながり、安心してお墓を守り続けられる選択として注目されています。
+      </p>
+      <p class="column-text">
+        改葬の手続きや手順などの詳細は現地係員がご説明しますので、お気軽にお問い合わせください。
+      </p>
+      <div class="column-link">
+        <a href="#contact">👉 改葬に関するお問い合わせ・ご相談はこちら</a>
+      </div>
+    </section>
+
+    <section class="section" id="access">
+      <h2>アクセス</h2>
+      <img src="access_map.jpg" alt="アクセス地図" style="width:100%; max-width:600px; border-radius:8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3234.6715690623313!2d140.03223127634423!3d35.83989397253578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60187dc261555555%3A0xad5b3df6672322cb!2z5oiR5孫5a2Q6ZyK5ZyS!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <p style="margin-top: 15px; margin-bottom: 0;"><strong>住所：</strong>千葉県我孫子市岡発戸字榎戸1380</p>
+
+      <div class="reception-notice">
+        <p>ご来園の際は霊園入口右側のご見学受付所にお寄りいただき、<span style="text-decoration: underline;">このページのトップ画面をご提示ください。</span>現地係員が霊園内をご案内させていただきます。</p>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>現地案内会のご案内・お問い合わせ</h2>
+      <p style="font-size: 1.3rem; margin-bottom: 10px;"><strong>現地係員直通電話：<a href="tel:08011781515" style="color: #2a5c2a; text-decoration: none;">080-1178-1515</a></strong></p>
+      <a href="tel:08011781515" class="btn-primary">電話をかける</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 我孫子霊園 ABIKO CEMETERY</p>
+  </footer>
+</body>
+</html>
