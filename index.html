@@ -13,7 +13,7 @@
       padding: 100px 20px;
       text-align: center;
       color: white;
-    }
+      }
     .fv-title { margin: 0 0 20px 0; }
     .fv-title .main-text { 
       font-size: 3.5rem; font-weight: bold; display: block;
@@ -122,6 +122,46 @@
       .column-section { margin: 30px 20px 40px 20px; padding: 25px 20px; }
       .reception-notice { margin: 20px 10px 0 10px; font-size: 0.95rem; }
     }
+/* 霊園概要（地味・小さめデザイン） */
+    .overview-section {
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      padding: 0 30px;
+      color: #777; /* 文字色を薄いグレーにして地味に */
+      font-size: 0.8rem; /* 文字サイズを小さく */
+      line-height: 1.5;
+    }
+    .overview-title {
+      font-size: 0.9rem;
+      margin: 0 0 10px 0;
+      color: #555;
+      border-bottom: 1px dashed #ccc; /* 控えめな破線 */
+      padding-bottom: 5px;
+    }
+    .overview-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+    }
+    .overview-item {
+      width: calc(50% - 12px); /* PC時は2列に並べる */
+      text-align: left;
+    }
+    .overview-label {
+      display: inline-block;
+      min-width: 110px;
+      font-weight: bold;
+      color: #666;
+    }
+    .overview-label::after {
+      content: "：";
+    }
+
+    /* スマホ対応：横幅が狭いときは1列に */
+    @media (max-width: 768px) {
+      .overview-section { padding: 0 20px; margin-bottom: 30px; }
+      .overview-item { width: 100%; }
+    }
   </style>
 </head>
 
@@ -151,7 +191,7 @@
         <img src="cemetery_green.jpg" class="gimmick-image" alt="緑豊かな霊園">
         <img src="cemetery_rows.jpg" class="gimmick-image" alt="整然と並ぶ墓石">
       </div>
-      <p style="margin-top:20px; font-size: 1.2rem;"><strong>165.5万円（税込）</strong><br><span style="font-size: 0.9rem; color: #555;">墓石工事代・永代使用料・基本彫刻代・消費税すべて込み</span></p>
+      <p style="margin-top:20px; font-size: 1.2rem;"><strong>165.5万円より（税込）</strong><br><span style="font-size: 0.9rem; color: #555;">墓石工事代・永代使用料・基本彫刻代・消費税すべて込み</span></p>
     </section>
 
     <section class="section">
@@ -188,6 +228,19 @@
       </div>
     </section>
 
+<!-- 霊園概要セクション（コラムとアクセスの間に追加） -->
+    <section class="overview-section">
+      <h4 class="overview-title">我孫子霊園 概要</h4>
+      <div class="overview-grid">
+        <div class="overview-item"><span class="overview-label">住所</span>千葉県我孫子市岡発戸字榎戸1380</div>
+        <div class="overview-item"><span class="overview-label">経営主体</span>宗教法人 本妙寺</div>
+        <div class="overview-item"><span class="overview-label">墓地経営許可番号</span>千葉県知事8-3号</div>
+        <div class="overview-item"><span class="overview-label">開発許可番号</span>県宅指令第6号の11</div>
+        <div class="overview-item"><span class="overview-label">総面積</span>17,749㎡</div>
+        <div class="overview-item"><span class="overview-label">新規開発面積</span>7,035㎡</div>
+      </div>
+    </section>
+
     <section class="section" id="access">
       <h2>アクセス</h2>
       <img src="access_map.jpg" alt="アクセス地図" style="width:100%; max-width:600px; border-radius:8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
@@ -196,10 +249,6 @@
       </div>
       <p style="margin-top: 15px; margin-bottom: 0;"><strong>住所：</strong>千葉県我孫子市岡発戸字榎戸1380</p>
 
-      <div style="margin-top: 20px;">
-        <a href="https://maps.app.goo.gl/fJnxiadiBgQPXMV9A" target="_blank" rel="noopener noreferrer" class="btn-primary">グーグルマップでルート案内する</a>
-      </div>
-
       <div class="reception-notice">
         <p>ご来園の際は霊園入口右側のご見学受付所にお寄りいただき、<span style="text-decoration: underline;">このページのトップ画面をご提示ください。</span>現地係員が霊園内をご案内させていただきます。</p>
       </div>
@@ -207,7 +256,15 @@
 
     <section id="contact" class="section">
       <h2>現地案内会のご案内・お問い合わせ</h2>
-      <p style="font-size: 1.3rem; margin-bottom: 10px;"><strong>現地係員直通電話：<a href="tel:08011781515" style="color: #2a5c2a; text-decoration: none;">080-1178-1515</a></strong></p>
+      
+      <p style="font-size: 1.1rem; color: #555; margin-bottom: 20px;">
+        <strong>現地ご案内時間：9：00～17：00</strong>
+      </p>
+
+      <p style="font-size: 1.3rem; margin-bottom: 10px;">
+        <strong>現地係員直通電話：<a href="tel:08011781515" style="color: #2a5c2a; text-decoration: none;">080-1178-1515</a></strong>
+      </p>
+      
       <a href="tel:08011781515" class="btn-primary">電話をかける</a>
     </section>
   </main>
