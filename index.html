@@ -1,281 +1,1062 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>我孫子霊園 ABIKO CEMETERY｜田園風景に囲まれた緑豊かな霊園</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family: "Yu Gothic", "Helvetica Neue", sans-serif; margin:0; padding:0; color:#333; line-height:1.6; }
-    
-    /* ヘッダー・ロゴデザイン */
-    header.fv {
-      background: url('fv_abiko.jpg') center/cover no-repeat;
-      padding: 100px 20px;
-      text-align: center;
-      color: white;
-      }
-    .fv-title { margin: 0 0 20px 0; }
-    .fv-title .main-text { 
-      font-size: 3.5rem; font-weight: bold; display: block;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-    }
-    .fv-title .sub-text { 
-      font-size: 1.2rem; letter-spacing: 0.3em; display: block; margin-top: 10px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-    }
-    
-    /* コピーの可読性向上 */
-    .copy-box { max-width: 640px; margin: 0 auto 30px auto; }
-    .copy-text { 
-      font-weight: bold; background: rgba(0,0,0,0.6); padding: 20px; 
-      border-radius: 8px; display: inline-block; margin: 0;
-    }
-
-    /* セクションデザイン */
-    .section { padding: 60px 20px; max-width: 900px; margin: auto; text-align: center; }
-    
-    /* 霊園の特徴セクション */
-    .bg-light-green { background-color: #f4f7f4; }
-    .feature-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: left;
-    }
-    .feature-text { flex: 1; }
-    .feature-text p { margin: 0; font-size: 1.05rem; text-align: justify; }
-    .feature-image { flex: 1; text-align: center; }
-    .feature-image img { width: 100%; max-width: 450px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-
-    /* コラム風デザイン */
-    .column-section {
-      max-width: 800px;
-      margin: 40px auto 60px auto;
-      padding: 35px 30px;
-      background-color: #fafafa;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      text-align: left;
-    }
-    .column-title {
-      font-size: 1.4rem;
-      color: #2a5c2a;
-      margin-top: 0;
-      margin-bottom: 15px;
-      border-bottom: 2px solid #2a5c2a;
-      padding-bottom: 8px;
-    }
-    .column-text { font-size: 1rem; margin-bottom: 15px; text-align: justify; }
-    .column-link { text-align: right; font-size: 0.9rem; }
-    .column-link a { color: #2a5c2a; font-weight: bold; text-decoration: underline; }
-
-    /* ゆとり墓所 画像レイアウト */
-    .main-yutori-image { margin-bottom: 20px; }
-    .main-yutori-image img { width: 100%; max-width: 600px; border-radius: 8px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    .sub-yutori-images { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-    .sub-yutori-images img { width: 45%; max-width: 290px; border-radius: 8px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    
-    /* 画像ギミック */
-    .gimmick-image { transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
-    .gimmick-image:hover { transform: scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-    
-    /* 地図・埋め込み */
-    .map-embed iframe { width: 100%; max-width: 600px; height: 450px; border: 0; margin-top: 20px; }
-    
-    /* 赤帯受付案内 */
-    .reception-notice {
-      max-width: 600px;
-      margin: 25px auto 0 auto;
-      padding: 20px;
-      background-color: #d9383a;
-      color: #ffffff;
-      border-radius: 6px;
-      text-align: left;
-      font-weight: bold;
-      font-size: 1.05rem;
-      box-shadow: 0 4px 12px rgba(217, 56, 58, 0.3);
-    }
-    .reception-notice p { margin: 0; text-align: justify; }
-
-    /* ボタン・その他 */
-    .btn-primary { 
-      display: inline-block; background: #2a5c2a; color: white; padding: 15px 30px; 
-      border-radius: 6px; text-decoration: none; font-size: 18px; font-weight: bold;
-      transition: background-color 0.3s;
-    }
-    .btn-primary:hover { background: #1e421e; }
-    footer { text-align:center; padding:20px; background:#f5f5f5; }
-
-    /* レスポンシブ対応（スマホ向け） */
-    @media (max-width: 768px) {
-      .fv-title .main-text { font-size: 2.5rem; }
-      .fv-title .sub-text { font-size: 1rem; }
-      .sub-yutori-images { flex-direction: column; align-items: center; }
-      .sub-yutori-images img { width: 100%; max-width: 600px; }
-      
-      .feature-container { flex-direction: column; gap: 20px; }
-      .feature-text p { font-size: 1rem; }
-      
-      .column-section { margin: 30px 20px 40px 20px; padding: 25px 20px; }
-      .reception-notice { margin: 20px 10px 0 10px; font-size: 0.95rem; }
-    }
-/* 霊園概要（地味・小さめデザイン） */
-    .overview-section {
-      max-width: 800px;
-      margin: 0 auto 40px auto;
-      padding: 0 30px;
-      color: #777; /* 文字色を薄いグレーにして地味に */
-      font-size: 0.8rem; /* 文字サイズを小さく */
-      line-height: 1.5;
-    }
-    .overview-title {
-      font-size: 0.9rem;
-      margin: 0 0 10px 0;
-      color: #555;
-      border-bottom: 1px dashed #ccc; /* 控えめな破線 */
-      padding-bottom: 5px;
-    }
-    .overview-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 24px;
-    }
-    .overview-item {
-      width: calc(50% - 12px); /* PC時は2列に並べる */
-      text-align: left;
-    }
-    .overview-label {
-      display: inline-block;
-      min-width: 110px;
-      font-weight: bold;
-      color: #666;
-    }
-    .overview-label::after {
-      content: "：";
-    }
-
-    /* スマホ対応：横幅が狭いときは1列に */
-    @media (max-width: 768px) {
-      .overview-section { padding: 0 20px; margin-bottom: 30px; }
-      .overview-item { width: 100%; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【公式】我孫子霊園 | 1.5㎡ゆとり墓所 新発売</title>
+    <!-- Tailwind CSS (Aesthetics and spacing) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#F5F5F5', // 落ち着いたライトグレー背景
+                            dark: '#1C3124',  // 深い上品なグリーン
+                            gold: '#C5A880',  // 優美なゴールド調
+                            goldhover: '#B3946B',
+                            accent: '#D32F2F',  // ご案内用の目立つ赤
+                            text: '#222222',
+                        }
+                    },
+                    fontSize: {
+                        'base': '17px', // 高齢者向けに基本サイズを大きく設定
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons for responsive and clear visual anchors -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Web Font (Noto Sans JP) for maximum readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            color: #222222;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* スムーズスクロール */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
+<body class="min-h-screen text-brand-text">
 
-<body>
-  <header class="fv">
-    <h1 class="fv-title">
-      <span class="main-text">我孫子霊園</span>
-      <span class="sub-text">ABIKO CEMETERY</span>
-    </h1>
-    <div class="copy-box">
-      <p class="copy-text">
-        心が深呼吸するような静けさ。<br>
-        広々とした園内に、やわらかな陽光と緑が広がる場所。<br>
-        我孫子霊園は、訪れる方が自然と落ち着ける、穏やかな時間を提供します。
-      </p>
-    </div>
-    <a href="#contact" class="btn-primary">現地案内会の予約・お問い合わせ</a>
-  </header>
-
-  <main>
-    <section class="section">
-      <h2>ゆとり墓所区画 1.5㎡</h2>
-      <div class="main-yutori-image">
-        <img src="yutori_165.jpg" class="gimmick-image" alt="ゆとり墓所区画 1.5㎡ 165.5万円">
-      </div>
-      <div class="sub-yutori-images">
-        <img src="cemetery_green.jpg" class="gimmick-image" alt="緑豊かな霊園">
-        <img src="cemetery_rows.jpg" class="gimmick-image" alt="整然と並ぶ墓石">
-      </div>
-      <p style="margin-top:20px; font-size: 1.2rem;"><strong>165.5万円より（税込）</strong><br><span style="font-size: 0.9rem; color: #555;">墓石工事代・永代使用料・基本彫刻代・消費税すべて込み</span></p>
-    </section>
-
-    <section class="section">
-      <h2>区画案内</h2>
-      <img src="blocks_map.jpg" alt="区画図" style="width:100%; max-width:600px; border-radius:8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-    </section>
-
-    <div class="bg-light-green">
-      <section class="section" style="padding: 60px 20px;">
-        <div class="feature-container">
-          <div class="feature-text">
-            <p>
-              自然豊かな高台に広がる霊園は、四季の風が心地よく抜ける開放的な空間。陽当たりの良い区画が続き、ゆったりとした参道と丁寧に手入れされた植栽が、訪れるたびに清々しさを感じさせます。<br><br>
-              管理事務所の対応も行き届き、供花やお線香の購入もできるため、手ぶらで気軽にお参りが可能。静けさと便利さが両立した立地で、家族が無理なく通い続けられる“環境の良い霊園”として選ばれています。
-            </p>
-          </div>
-          <div class="feature-image">
-            <img src="seasons.png" alt="四季のイメージ画像" class="gimmick-image">
-          </div>
+    <!-- 1. ヘッダー -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div>
+                <span class="text-xs text-brand-dark block tracking-widest font-bold">ABIKO CEMETERY</span>
+                <h1 class="text-xl md:text-2xl font-bold text-brand-dark tracking-wider">我孫子霊園</h1>
+            </div>
+            <div class="text-right">
+                <span class="text-[11px] text-gray-500 block">現地案内会 受付時間 9:00〜17:00</span>
+                <span class="inline-block bg-brand-dark text-white text-xs font-bold px-2 py-0.5 rounded">宗派不問</span>
+            </div>
         </div>
-      </section>
+    </header>
+
+    <!-- 2. トップビジュアル (Hero Section) -->
+    <section class="relative bg-brand-dark text-white overflow-hidden">
+        <!-- 背景画像 (空撮イメージプレースホルダー) -->
+        <div class="relative w-full h-[45vh] min-h-[300px] md:h-[55vh]">
+            <img src="fv_abiko.jpg" alt="我孫子霊園 空撮イメージ" class="w-full h-full object-cover opacity-85" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507038732509-8b1a9623223a?auto=format&fit=crop&q=80&w=1200';">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-black/30"></div>
+        </div>
+        
+        <!-- メインコピーオーバーレイ -->
+        <div class="absolute bottom-0 left-0 w-full p-5 md:p-8 text-left">
+            <div class="max-w-4xl mx-auto">
+                <p class="text-brand-gold font-bold text-base md:text-lg tracking-wider mb-1 drop-shadow-md">
+                    ★ 田園風景に囲まれた緑豊かな霊園です
+                </p>
+                <h2 class="text-2xl md:text-4xl font-bold tracking-tight leading-tight mb-2 drop-shadow-lg">
+                    光あふれる、やすらぎの聖地。<br>
+                    待望の「1.5㎡ゆとり墓地」誕生。
+                </h2>
+                <div class="inline-block bg-brand-gold text-brand-dark font-bold text-sm md:text-base px-3 py-1 rounded shadow-md">
+                    宗旨・宗派一切不問
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主な魅力クイックサマリー -->
+    <section class="bg-brand-dark text-white py-4 px-4 text-center border-t border-brand-gold/20">
+        <div class="max-w-4xl mx-auto grid grid-cols-3 gap-2 text-xs md:text-sm">
+            <div class="border-r border-brand-gold/30 last:border-0 py-1">
+                <span class="block text-brand-gold font-bold text-base md:text-lg">JR常磐線</span>
+                「天王台駅」車で約5分
+            </div>
+            <div class="border-r border-brand-gold/30 last:border-0 py-1">
+                <span class="block text-brand-gold font-bold text-base md:text-lg">前後にゆとり</span>
+                隣と密着しない設計
+            </div>
+            <div class="border-r border-brand-gold/30 last:border-0 py-1">
+                <span class="block text-brand-gold font-bold text-base md:text-lg">総額165.5万〜</span>
+                墓石・使用料・消費税含
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. メイン紹介：1.5㎡ゆとり墓地 -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+            <span class="text-brand-gold font-bold text-lg tracking-widest block mb-1">RECOMMENDED</span>
+            <h3 class="text-2xl md:text-3xl font-bold text-brand-dark border-b-2 border-brand-gold pb-3 inline-block">
+                販売中の「1.5㎡ゆとり墓所」とは
+            </h3>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed mb-8 text-center max-w-2xl mx-auto">
+            お墓の左右や前後に十分な「ゆとりスペース」を設けた、我孫子霊園を代表する人気区画です。
+            お隣と接していないため圧迫感がなく、風通しと陽当たりに優れた静かなお参り環境を実現します。
+        </p>
+
+        <!-- メインの販売アピール画像 -->
+        <div class="rounded-xl overflow-hidden shadow-md mb-8 relative bg-white max-w-md mx-auto">
+            <div class="w-full aspect-square overflow-hidden bg-gray-100">
+                <img src="yutori_165.jpg" alt="1.5㎡ゆとり墓所イメージ" class="w-full h-full object-cover animate-fade-in" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=1200';">
+            </div>
+            <div class="bg-brand-dark text-white p-6">
+                <div class="text-center">
+                    <span class="text-brand-gold font-bold text-sm tracking-widest block mb-1">永代使用料・墓石代・基本彫刻・工事代・消費税すべて込み</span>
+                    <p class="text-3xl md:text-4xl font-bold">
+                        総額 <span class="text-brand-gold text-4xl md:text-5xl">165.5</span> 万円より<span class="text-lg">(税込)</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 墓石「和風」vs「洋風」シミュレーター風切り替えUI -->
+        <div class="bg-white rounded-xl p-6 shadow-md border border-gray-100 mb-8">
+            <h4 class="text-lg md:text-xl font-bold text-center mb-4 text-brand-dark">
+                お好みに合わせて選べる、2つのスタイル
+            </h4>
+            
+            <!-- スイッチ -->
+            <div class="flex justify-center mb-6 bg-gray-100 p-1 rounded-full max-w-md mx-auto">
+                <button onclick="switchStone('japanese')" id="btn-japanese" class="flex-1 py-3 text-center rounded-full font-bold transition-all duration-300 text-sm md:text-base bg-brand-dark text-white shadow-sm">
+                    伝統を重んじる【和風墓石】
+                </button>
+                <button onclick="switchStone('western')" id="btn-western" class="flex-1 py-3 text-center rounded-full font-bold transition-all duration-300 text-sm md:text-base text-gray-500 hover:text-brand-dark">
+                    モダンで優美な【洋風墓石】
+                </button>
+            </div>
+
+            <!-- コンテンツエリア：和風 -->
+            <div id="stone-japanese" class="transition-all duration-300">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div>
+                        <img src="cemetery_rows.jpg" alt="和風墓石イメージ" class="w-full h-48 md:h-64 object-cover rounded-lg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80&w=600';">
+                    </div>
+                    <div>
+                        <h5 class="text-xl font-bold text-brand-dark mb-2">気品あふれる、日本の伝統的なたたずまい</h5>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            永い歴史の中で磨かれた格式高い美しさを誇る和風墓石。細部にまで職人の美意識が宿ります。周囲に遮るもののないゆとり区画なので、和風ならではの威風堂々としたシルエットがより一層引き立ちます。
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold mr-2"></i>日本の心を感じる伝統美</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold mr-2"></i>格調高く荘厳な仕上がり</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- コンテンツエリア：洋風 -->
+            <div id="stone-western" class="hidden transition-all duration-300">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div>
+                        <img src="cemetery_green.jpg" alt="洋風墓石イメージ" class="w-full h-48 md:h-64 object-cover rounded-lg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=600';">
+                    </div>
+                    <div>
+                        <h5 class="text-xl font-bold text-brand-dark mb-2">洗練されたデザイン、家族に寄り添うお墓</h5>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            高さを抑えた安定感のある形状と、優美な曲線が織りなす洋風墓石。お好きな文字や花のレリーフなどをあしらいやすく、あなたらしさを表現することができます。芝生や緑の空と最高に調和する美しさです。
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold mr-2"></i>明るく洗練されたモダンデザイン</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold mr-2"></i>想い出のメッセージや彫刻が映えるフォルム</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 価格表セクション -->
+    <section class="bg-white py-12 px-4 border-y border-gray-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+                <span class="text-brand-gold font-bold text-lg tracking-widest block mb-1">PRICE PLAN</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-brand-dark border-b-2 border-brand-gold pb-3 inline-block">
+                    料金のご案内
+                </h3>
+            </div>
+
+            <!-- 価格詳細カード -->
+            <div class="bg-brand-light rounded-xl overflow-hidden shadow-inner p-6 md:p-8 border border-gray-100 max-w-2xl mx-auto">
+                <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-300">
+                    <span class="text-lg md:text-xl font-bold text-brand-dark">1.5㎡ゆとり墓所特別セット</span>
+                    <span class="bg-brand-gold text-brand-dark text-xs font-bold px-3 py-1 rounded">先着順・お早めに</span>
+                </div>
+
+                <div class="space-y-4 mb-6">
+                    <div class="flex justify-between text-base">
+                        <span class="text-gray-600">永代使用料（土地使用権利）</span>
+                        <span class="font-semibold text-right">含まれています</span>
+                    </div>
+                    <div class="flex justify-between text-base">
+                        <span class="text-gray-600">墓石工事代（高級白御影石）</span>
+                        <span class="font-semibold text-right">含まれています</span>
+                    </div>
+                    <div class="flex justify-between text-base">
+                        <span class="text-gray-600">基本家名彫刻代</span>
+                        <span class="font-semibold text-right">含まれています</span>
+                    </div>
+                    <div class="flex justify-between text-base">
+                        <span class="text-gray-600">消費税（10％相当）</span>
+                        <span class="font-semibold text-right">含まれています</span>
+                    </div>
+                </div>
+
+                <div class="text-center bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <span class="text-xs text-gray-500 block mb-1">これらすべてを含んで</span>
+                    <div class="text-3xl md:text-4xl font-bold text-brand-dark">
+                        一式 <span class="text-brand-accent text-4xl md:text-5xl">165.5</span>万円〜<span class="text-base text-gray-700">(税込)</span>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2">※年間管理費が別途必要となります。詳しくは現地係員までお尋ねください。</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-6">
+                <img src="price_table.jpg" alt="価格一覧図イメージ" class="mx-auto rounded-lg shadow-sm border border-gray-200 max-w-full md:max-w-md" onerror="this.style.display='none';">
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 霊園全体区画図 & 特徴 -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+            <span class="text-brand-gold font-bold text-lg tracking-widest block mb-1">FEATURES</span>
+            <h3 class="text-2xl md:text-3xl font-bold text-brand-dark border-b-2 border-brand-gold pb-3 inline-block">
+                我孫子霊園が選ばれる理由
+            </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- 特徴テキスト -->
+            <div class="flex flex-col justify-center space-y-4">
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-brand-dark">
+                    <h4 class="font-bold text-brand-dark text-lg mb-1">自然豊かな高台に広がる抜群のロケーション</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        四季の風が心地よく吹き抜ける開放的な空間です。陽当たりの良さを確保した設計で、園内には常に明るい陽光が満ちています。
+                    </p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-brand-dark">
+                    <h4 class="font-bold text-brand-dark text-lg mb-1">手入れの行き届いた植栽と、ゆったりとした参道</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        常にきれいに整えられた参道はフラット設計で、ご高齢の方やベビーカーをご利用のご家族でも歩きやすく、安心してお参りいただけます。
+                    </p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-brand-dark">
+                    <h4 class="font-bold text-brand-dark text-lg mb-1">手ぶらで、いつでも気軽にお参り可能</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        管理事務所にて、お供え用の美しい生花や使い切りのお線香をご用意しております。思い立ったその日にふらりとお立ち寄りください。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 区画図イメージプレースホルダー -->
+            <div class="bg-white p-4 rounded-xl shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <h4 class="text-brand-dark font-bold mb-2 text-center text-lg">霊園内・配置マップ</h4>
+                    <p class="text-xs text-gray-500 mb-4 text-center">陽当たりの良いゆとり墓地を多数ご用意しております</p>
+                </div>
+                <div class="relative bg-brand-light rounded-lg flex items-center justify-center p-4">
+                    <img src="blocks_map.jpg" alt="霊園全体区画図" class="w-full h-auto object-contain rounded" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1590073844006-33379778ae09?auto=format&fit=crop&q=80&w=600';">
+                    <span class="absolute top-2 right-2 bg-brand-dark text-white text-[11px] font-semibold px-2 py-0.5 rounded">
+                        1.5㎡ゆとり区画 好評案内中
+                    </span>
+                </div>
+                <p class="text-xs text-gray-400 mt-2 text-center">※実際の区画のご見学は現地係員が詳しくご案内します。</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-6">
+            <img src="seasons.png" alt="季節ごとの霊園の風景" class="mx-auto max-w-full rounded-lg" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <!-- 6. 改葬（お墓の引っ越し）を検討している方へ -->
+    <section class="bg-brand-dark text-white py-12 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+                <span class="text-brand-gold font-bold text-lg tracking-widest block mb-1">RE-BURIAL</span>
+                <h3 class="text-2xl md:text-3xl font-bold border-b-2 border-brand-gold pb-3 inline-block">
+                    改葬（お墓のお引っ越し）をお考えの方へ
+                </h3>
+            </div>
+
+            <div class="bg-white/5 rounded-xl p-6 md:p-8 backdrop-blur-sm border border-white/10">
+                <h4 class="text-lg md:text-xl font-bold text-brand-gold mb-4 text-center">
+                    「遠くの故郷にあるお墓を、通いやすい場所に移動したい」
+                </h4>
+                <p class="text-gray-200 text-sm md:text-base leading-relaxed mb-6">
+                    「実家のお墓が遠くてお参りに行くのが難しい」「年齢的にお墓の管理が辛くなってきた」といった理由で、我孫子霊園にお墓を移設（改葬）される方が増えています。<br>
+                    手続きに必要な書類の作成や、現在の墓地の整地、新しく我孫子霊園に建てる手順など、専門知識を持ったスタッフがすべて丁寧にお手伝いいたします。
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mt-4">
+                    <div class="bg-brand-dark/50 p-4 rounded border border-brand-gold/20">
+                        <span class="text-brand-gold font-bold block mb-1">1. 無料での事前相談</span>
+                        費用や手続きの流れを最初から明確にご案内いたします。
+                    </div>
+                    <div class="bg-brand-dark/50 p-4 rounded border border-brand-gold/20">
+                        <span class="text-brand-gold font-bold block mb-1">2. 面倒な行政手続きサポート</span>
+                        受入証明書の発行や、各種手続きについて的確にアドバイス。
+                    </div>
+                    <div class="bg-brand-dark/50 p-4 rounded border border-brand-gold/20">
+                        <span class="text-brand-gold font-bold block mb-1">3. 新しい墓石デザインの提案</span>
+                        伝統的なお墓から最新のデザインまで、納得のご提案。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. アクセス・周辺環境 -->
+    <section class="py-12 px-4 max-w-4xl mx-auto" id="access">
+        <div class="text-center mb-8">
+            <span class="text-brand-gold font-bold text-lg tracking-widest block mb-1">ACCESS</span>
+            <h3 class="text-2xl md:text-3xl font-bold text-brand-dark border-b-2 border-brand-gold pb-3 inline-block">
+                交通アクセス・現地案内
+            </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 items-stretch">
+            <!-- 住所と経路説明 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-4 pb-2 border-b border-gray-200">
+                        我孫子霊園（あびこれいえん）
+                    </h4>
+                    <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                        <span class="font-bold">■ 住所：</span><br>
+                        〒270-1137 千葉県我孫子市岡発戸字榎戸1380
+                    </p>
+                    <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                        <span class="font-bold">■ 電車・お車でお越しの場合：</span><br>
+                        JR常磐線「天王台駅」南口よりお車（タクシー）で約5分。
+                    </p>
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        東関東の穏やかな光にあふれた自然豊かな高台。近隣エリア（松戸市・柏市・流山市・印西市など）からもお車でアクセスしやすい好立地です。
+                    </p>
+                </div>
+
+                <!-- Google マップ ルート案内ボタン -->
+                <div class="mt-6 pt-4 border-t border-gray-100">
+                    <a href="https://maps.app.goo.gl/xqMossBK4g2bLoKQ8" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center bg-brand-gold hover:bg-brand-goldhover text-brand-dark font-bold py-3 px-4 rounded-lg shadow-sm transition-all duration-300">
+                        <i data-lucide="map-pin" class="w-5 h-5 mr-2"></i>
+                        Googleマップでルート案内を見る
+                    </a>
+                </div>
+            </div>
+
+            <!-- Google マップ埋め込み -->
+            <div class="rounded-xl overflow-hidden shadow-md border border-gray-200 min-h-[300px]">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1070.2294970295616!2d140.05598125493353!3d35.86096105118873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x602278346e4e3f05%3A0xddaa6ccddbfe76b0!2z44CSMjcwLTExMzcg5Y2D6JGJ55yM5oiR5a2r5a2Q5biC5bKh55m65oi45oiR5a2r5a2Q6ZyK5ZyS!5e1!3m2!1sja!2sjp!4v1783911319878!5m2!1sja!2sjp" class="w-full h-full min-h-[300px]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+        </div>
+
+        <!-- ご来園時のご提示キャンペーン（赤地に白文字で目立つアピールエリア） -->
+        <div class="bg-brand-accent text-white rounded-xl p-6 md:p-8 shadow-lg text-center my-8">
+            <h4 class="text-xl md:text-2xl font-bold mb-4 flex items-center justify-center gap-2 flex-wrap">
+                <i data-lucide="info" class="w-6 h-6 animate-pulse"></i>
+                ご来園の皆様へ大切なご案内
+            </h4>
+            <p class="text-base md:text-lg font-medium leading-relaxed max-w-2xl mx-auto">
+                ご来園の際は霊園入口右側の<span class="underline decoration-yellow-400 decoration-2 underline-offset-4 font-bold text-yellow-300">「ご見学受付所」</span>にお寄りいただき、<span class="underline decoration-yellow-400 decoration-2 underline-offset-4 font-bold text-yellow-300">このページのトップ画面</span>をご提示ください。現地係員が霊園内をご案内させていただきます。
+            </p>
+        </div>
+    </section>
+
+    <!-- 8. よくある質問 -->
+    <section class="bg-white py-12 px-4 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+                <span class="text-brand-gold font-bold text-lg tracking-widest block mb-1">Q&A</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-brand-dark border-b-2 border-brand-gold pb-3 inline-block">
+                    よくあるご質問
+                </h3>
+            </div>
+
+            <div class="space-y-4 max-w-3xl mx-auto">
+                <!-- 質問1 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden bg-brand-light">
+                    <button class="w-full text-left p-5 font-bold flex justify-between items-center text-brand-dark transition-colors duration-200 hover:bg-gray-100 text-base" onclick="toggleFaq(1)">
+                        <span>Q1. 宗教・宗派が違っていてもお墓を購入できますか？</span>
+                        <i data-lucide="chevron-down" id="faq-icon-1" class="w-5 h-5 transition-transform duration-300 text-brand-gold"></i>
+                    </button>
+                    <div id="faq-ans-1" class="hidden p-5 border-t border-gray-200 bg-white text-gray-600 text-sm leading-relaxed">
+                        はい、まったく問題ありません。我孫子霊園は、宗教・宗旨・宗派を一切問わず、どなたでもお申込みいただける霊園となっております。在来仏教だけでなく、神道やキリスト教、無宗教の方でも同一条件で安心してご利用いただけます。
+                    </div>
+                </div>
+
+                <!-- 質問2 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden bg-brand-light">
+                    <button class="w-full text-left p-5 font-bold flex justify-between items-center text-brand-dark transition-colors duration-200 hover:bg-gray-100 text-base" onclick="toggleFaq(2)">
+                        <span>Q2. 「ゆとり墓地」とはどのような特徴があるお墓ですか？</span>
+                        <i data-lucide="chevron-down" id="faq-icon-2" class="w-5 h-5 transition-transform duration-300 text-brand-gold"></i>
+                    </button>
+                    <div id="faq-ans-2" class="hidden p-5 border-t border-gray-200 bg-white text-gray-600 text-sm leading-relaxed">
+                        一般的なお墓は、お隣のお墓と接して隙間なく並んでいますが、「ゆとり墓地」は前後左右に特別な空間（スペース）を設けて設計されています。これにより、お隣のお墓を気にすることなく、圧迫感のない開放的な空間で心穏やかにお参りしていただけるのが最大の特徴です。
+                    </div>
+                </div>
+
+                <!-- 質問3 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden bg-brand-light">
+                    <button class="w-full text-left p-5 font-bold flex justify-between items-center text-brand-dark transition-colors duration-200 hover:bg-gray-100 text-base" onclick="toggleFaq(3)">
+                        <span>Q3. 現地見学には予約が必要ですか？</span>
+                        <i data-lucide="chevron-down" id="faq-icon-3" class="w-5 h-5 transition-transform duration-300 text-brand-gold"></i>
+                    </button>
+                    <div id="faq-ans-3" class="hidden p-5 border-t border-gray-200 bg-white text-gray-600 text-sm leading-relaxed">
+                        予約なしでの直接のご来園も歓迎しております。ただ、ご希望の日時にスムーズなご案内をお約束するため、お越しになる前にお気軽にお電話にてご一報いただけますと、より確実に対応可能です（直通電話: 080-1178-1515）。
+                    </div>
+                </div>
+
+                <!-- 質問4 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden bg-brand-light">
+                    <button class="w-full text-left p-5 font-bold flex justify-between items-center text-brand-dark transition-colors duration-200 hover:bg-gray-100 text-base" onclick="toggleFaq(4)">
+                        <span>Q4. 墓石工事代のほかに追加費用はかかりますか？</span>
+                        <i data-lucide="chevron-down" id="faq-icon-4" class="w-5 h-5 transition-transform duration-300 text-brand-gold"></i>
+                    </button>
+                    <div id="faq-ans-4" class="hidden p-5 border-t border-gray-200 bg-white text-gray-600 text-sm leading-relaxed">
+                        本プランに提示しております「165.5万円(税込)」は、永代使用料、墓石本体（高級白御影石）、基本家名彫刻代、標準取付工事代をすべて含んだ一式価格です。ただし、お墓購入後に毎年頂戴する「年間管理費」が別途必要となります。区画によって金額が異なりますので、詳細は現地係員がお見積書を作成し丁寧にご説明いたします。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. 経営主体 & 霊園概要 -->
+    <section class="bg-brand-dark text-white py-12 px-4 border-t border-brand-gold/30">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-xl md:text-2xl font-bold mb-6 text-center text-brand-gold">我孫子霊園 概要</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs md:text-sm text-gray-300">
+                <ul class="space-y-3">
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 住所</span> <span>千葉県我孫子市岡発戸字榎戸1380</span></li>
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 経営主体</span> <span>宗教法人 本妙寺</span></li>
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 墓地経営許可</span> <span>千葉県知事8-3号</span></li>
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 開発許可番号</span> <span>県宅指令第6号の11</span></li>
+                </ul>
+                <ul class="space-y-3">
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 総面積</span> <span>17,749㎡</span></li>
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 新規開発面積</span> <span>7,035㎡</span></li>
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 申込資格</span> <span>宗教・宗旨を問わず、どなたでもお申込みいただけます。</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. フッター -->
+    <footer class="bg-black text-gray-400 py-6 text-center px-4 pb-28 md:pb-24">
+        <p class="text-xs mb-2">© 我孫子霊園 All Rights Reserved. (経営主体：宗教法人 本妙寺)</p>
+        <p class="text-[10px] text-gray-600">※掲載の価格や画像は施工仕様・仕上がり・気候状況等により異なる場合がございます。詳細は現地案内会にてご確認ください。</p>
+    </footer>
+
+    <!-- スマホ・タブレット用 フローティング電話掛けコンタクトバー（高齢者に最適化） -->
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-4px_10px_rgba(0,0,0,0.1)] z-40 p-4">
+        <div class="max-w-md mx-auto flex gap-3">
+            <a href="tel:080-1178-1515" class="flex-1 flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-4 rounded-xl text-lg shadow-md transition-all active:scale-95">
+                <i data-lucide="phone-call" class="w-6 h-6 mr-2 animate-bounce"></i>
+                <span class="tracking-wide">係員直通に電話する</span>
+            </a>
+        </div>
+        <p class="text-center text-[11px] text-gray-500 mt-2">
+            お気軽にお問い合わせください：<span class="font-bold text-brand-dark">080-1178-1515</span>（9:00〜17:00 雨天実施）
+        </p>
     </div>
 
-    <section class="column-section">
-      <h3 class="column-title">【コラム】お墓の引っ越し「改葬」について</h3>
-      <p class="column-text">
-        改葬（かいそう）は、遠方や管理の負担などの理由で、今あるお墓を別の霊園へ移す手続きです。行政の許可が必要ですが、環境の良い場所へ移せるため、将来の供養がぐっとしやすくなるのが魅力。家族の負担軽減やアクセス改善につながり、安心してお墓を守り続けられる選択として注目されています。
-      </p>
-      <p class="column-text">
-        改葬の手続きや手順などの詳細は現地係員がご説明しますので、お気軽にお問い合わせください。
-      </p>
-      <div class="column-link">
-        <a href="#contact">👉 改葬に関するお問い合わせ・ご相談はこちら</a>
-      </div>
-    </section>
+    <!-- JavaScript logic -->
+    <script>
+        // Lucideアイコンの初期化
+        lucide.createIcons();
 
-<!-- 霊園概要セクション（コラムとアクセスの間に追加） -->
-    <section class="overview-section">
-      <h4 class="overview-title">我孫子霊園 概要</h4>
-      <div class="overview-grid">
-        <div class="overview-item"><span class="overview-label">住所</span>千葉県我孫子市岡発戸字榎戸1380</div>
-        <div class="overview-item"><span class="overview-label">経営主体</span>宗教法人 本妙寺</div>
-        <div class="overview-item"><span class="overview-label">墓地経営許可番号</span>千葉県知事8-3号</div>
-        <div class="overview-item"><span class="overview-label">開発許可番号</span>県宅指令第6号の11</div>
-        <div class="overview-item"><span class="overview-label">総面積</span>17,749㎡</div>
-        <div class="overview-item"><span class="overview-label">新規開発面積</span>7,035㎡</div>
-      </div>
-    </section>
+        // 墓石切り替えシミュレーター用
+        function switchStone(type) {
+            const btnJap = document.getElementById('btn-japanese');
+            const btnWes = document.getElementById('btn-western');
+            const contentJap = document.getElementById('stone-japanese');
+            const contentWes = document.getElementById('stone-western');
 
-<section class="section" id="access">
-      <h2>アクセス</h2>
-      <img src="access_map.jpg" alt="アクセス地図" style="width:100%; max-width:600px; border-radius:8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-      <div class="map-embed">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3233.5129559634943!2d140.05388607603334!3d35.86094442008047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x602278346e4e3f05%3A0xddaa6ccddbfe76b0!2z44CSMjcwLTExMzcg5Y2D6JGJ55yM5oiR5a2r5a2Q5biC5bKh55m65oi45oiR5a2r5a2Q6ZyK5ZyS!5e0!3m2!1sja!2sjp!4v1782947838218!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
-      <p style="margin-top: 15px; margin-bottom: 0;"><strong>住所：</strong>千葉県我孫子市岡発戸字榎戸1380</p>
+            if (type === 'japanese') {
+                // ボタン表示切り替え
+                btnJap.className = "flex-1 py-3 text-center rounded-full font-bold transition-all duration-300 text-sm md:text-base bg-brand-dark text-white shadow-sm";
+                btnWes.className = "flex-1 py-3 text-center rounded-full font-bold transition-all duration-300 text-sm md:text-base text-gray-500 hover:text-brand-dark";
+                // コンテンツ切り替え
+                contentJap.classList.remove('hidden');
+                contentWes.classList.add('hidden');
+            } else {
+                // ボタン表示切り替え
+                btnWes.className = "flex-1 py-3 text-center rounded-full font-bold transition-all duration-300 text-sm md:text-base bg-brand-dark text-white shadow-sm";
+                btnJap.className = "flex-1 py-3 text-center rounded-full font-bold transition-all duration-300 text-sm md:text-base text-gray-500 hover:text-brand-dark";
+                // コンテンツ切り替え
+                contentWes.classList.remove('hidden');
+                contentJap.classList.add('hidden');
+            }
+        }
 
-      <div style="margin-top: 15px;">
-        <a href="https://maps.app.goo.gl/Rdvb9qw8ocrbEdJG7" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size: 16px; padding: 10px 20px;">
-          グーグルマップでルート案内する
-        </a>
-      </div>
-      <div class="reception-notice">
-        <p>ご来園の際は霊園入口右側のご見学受付所にお寄りいただき、<span style="text-decoration: underline;">このページのトップ画面をご提示ください。</span>現地係員が霊園内をご案内させていただきます。</p>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <h2>現地案内会のご案内・お問い合わせ</h2>
-      
-      <p style="font-size: 1.1rem; color: #555; margin-bottom: 20px;">
-        <strong>現地ご案内時間：9：00～17：00</strong>
-      </p>
-
-      <p style="font-size: 1.3rem; margin-bottom: 10px;">
-        <strong>現地係員直通電話：<a href="tel:08011781515" style="color: #2a5c2a; text-decoration: none;">080-1178-1515</a></strong>
-      </p>
-      
-      <a href="tel:08011781515" class="btn-primary">電話をかける</a>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 我孫子霊園 ABIKO CEMETERY</p>
-  </footer>
+        // アコーディオン (FAQ) 制御
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faq-ans-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                ans.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
 </body>
-</html>
+</htm<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【公式】我孫子霊園 | 1.5㎡ゆとり墓所 新発売</title>
+    <!-- Tailwind CSS (Aesthetics and spacing) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#F5F5F5', // 落ち着いたライトグレー背景
+                            dark: '#1C3124',  // 深い上品なグリーン
+                            gold: '#C5A880',  // 優美なゴールド調
+                            goldhover: '#B3946B',
+                            accent: '#D32F2F',  // ご案内用の目立つ赤
+                            text: '#222222',
+                        }
+                    },
+                    fontSize: {
+                        'base': '17px', // 高齢者向けに基本サイズを大きく設定
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons for responsive and clear visual anchors -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Web Font (Noto Sans JP) for maximum readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            color: #222222;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* スムーズスクロール */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-brand-text">
+
+    <!-- 1. ヘッダー -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div>
+                <span class="text-xs text-brand-dark block tracking-widest font-bold">ABIKO CEMETERY</span>
+                <h1 class="text-xl md:text-2xl font-bold text-brand-dark tracking-wider">我孫子霊園</h1>
+            </div>
+            <div class="text-right">
+                <span class="text-[11px] text-gray-500 block">現地案内会 受付時間 9:00〜17:00</span>
+                <span class="inline-block bg-brand-dark text-white text-xs font-bold px-2 py-0.5 rounded">宗派不問</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. トップビジュアル (Hero Section) -->
+    <section class="relative bg-brand-dark text-white overflow-hidden">
+        <!-- 背景画像 (空撮イメージプレースホルダー) -->
+        <div class="relative w-full h-[45vh] min-h-[300px] md:h-[55vh]">
+            <img src="fv_abiko.jpg" alt="我孫子霊園 空撮イメージ" class="w-full h-full object-cover opacity-85" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507038732509-8b1a9623223a?auto=format&fit=crop&q=80&w=1200';">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-black/30"></div>
+        </div>
+        
+        <!-- メインコピーオーバーレイ -->
+        <div class="absolute bottom-0 left-0 w-full p-5 md:p-8 text-left">
+            <div class="max-w-4xl mx-auto">
+                <p class="text-brand-gold font-bold text-base md:text-lg tracking-wider mb-1 drop-shadow-md">
+                    ★ 田園風景に囲まれた緑豊かな霊園です
+                </p>
+                <h2 class="text-2xl md:text-4xl font-bold tracking-tight leading-tight mb-2 drop-shadow-lg">
+                    光あふれる、やすらぎの聖地。<br>
+                    待望の「1.5㎡ゆとり墓地」誕生。
+                </h2>
+                <div class="inline-block bg-brand-gold text-brand-dark font-bold text-sm md:text-base px-3 py-1 rounded shadow-md">
+                    宗旨・宗派一切不問
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主な魅力クイックサマリー -->
+    <section class="bg-brand-dark text-white py-4 px-4 text-center border-t border-brand-gold/20">
+        <div class="max-w-4xl mx-auto grid grid-cols-3 gap-2 text-xs md:text-sm">
+            <div class="border-r border-brand-gold/30 last:border-0 py-1">
+                <span class="block text-brand-gold font-bold text-base md:text-lg">JR常磐線</span>
+                「天王台駅」車で約5分
+            </div>
+            <div class="border-r border-brand-gold/30 last:border-0 py-1">
+                <span class="block text-brand-gold font-bold text-base md:text-lg">前後にゆとり</span>
+                隣と密着しない設計
+            </div>
+            <div class="border-r border-brand-gold/30 last:border-0 py-1">
+                <span class="block text-brand-gold font-bold text-base md:text-lg">総額165.5万〜</span>
+                墓石・使用料・消費税含
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. メイン紹介：1.5㎡ゆとり墓地 -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+            <span class="text-brand-gold font-bold text-lg tracking-widest block mb-1">RECOMMENDED</span>
+            <h3 class="text-2xl md:text-3xl font-bold text-brand-dark border-b-2 border-brand-gold pb-3 inline-block">
+                販売中の「1.5㎡ゆとり墓所」とは
+            </h3>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed mb-8 text-center max-w-2xl mx-auto">
+            お墓の左右や前後に十分な「ゆとりスペース」を設けた、我孫子霊園を代表する人気区画です。
+            お隣と接していないため圧迫感がなく、風通しと陽当たりに優れた静かなお参り環境を実現します。
+        </p>
+
+        <!-- メインの販売アピール画像 -->
+        <div class="rounded-xl overflow-hidden shadow-md mb-8 relative bg-white max-w-md mx-auto">
+            <div class="w-full aspect-square overflow-hidden bg-gray-100">
+                <img src="yutori_165.jpg" alt="1.5㎡ゆとり墓所イメージ" class="w-full h-full object-cover animate-fade-in" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=1200';">
+            </div>
+            <div class="bg-brand-dark text-white p-6">
+                <div class="text-center">
+                    <span class="text-brand-gold font-bold text-sm tracking-widest block mb-1">永代使用料・墓石代・基本彫刻・工事代・消費税すべて込み</span>
+                    <p class="text-3xl md:text-4xl font-bold">
+                        総額 <span class="text-brand-gold text-4xl md:text-5xl">165.5</span> 万円より<span class="text-lg">(税込)</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 墓石「和風」vs「洋風」シミュレーター風切り替えUI -->
+        <div class="bg-white rounded-xl p-6 shadow-md border border-gray-100 mb-8">
+            <h4 class="text-lg md:text-xl font-bold text-center mb-4 text-brand-dark">
+                お好みに合わせて選べる、2つのスタイル
+            </h4>
+            
+            <!-- スイッチ -->
+            <div class="flex justify-center mb-6 bg-gray-100 p-1 rounded-full max-w-md mx-auto">
+                <button onclick="switchStone('japanese')" id="btn-japanese" class="flex-1 py-3 text-center rounded-full font-bold transition-all duration-300 text-sm md:text-base bg-brand-dark text-white shadow-sm">
+                    伝統を重んじる【和風墓石】
+                </button>
+                <button onclick="switchStone('western')" id="btn-western" class="flex-1 py-3 text-center rounded-full font-bold transition-all duration-300 text-sm md:text-base text-gray-500 hover:text-brand-dark">
+                    モダンで優美な【洋風墓石】
+                </button>
+            </div>
+
+            <!-- コンテンツエリア：和風 -->
+            <div id="stone-japanese" class="transition-all duration-300">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div>
+                        <img src="cemetery_rows.jpg" alt="和風墓石イメージ" class="w-full h-48 md:h-64 object-cover rounded-lg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80&w=600';">
+                    </div>
+                    <div>
+                        <h5 class="text-xl font-bold text-brand-dark mb-2">気品あふれる、日本の伝統的なたたずまい</h5>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            永い歴史の中で磨かれた格式高い美しさを誇る和風墓石。細部にまで職人の美意識が宿ります。周囲に遮るもののないゆとり区画なので、和風ならではの威風堂々としたシルエットがより一層引き立ちます。
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold mr-2"></i>日本の心を感じる伝統美</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold mr-2"></i>格調高く荘厳な仕上がり</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- コンテンツエリア：洋風 -->
+            <div id="stone-western" class="hidden transition-all duration-300">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div>
+                        <img src="cemetery_green.jpg" alt="洋風墓石イメージ" class="w-full h-48 md:h-64 object-cover rounded-lg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=600';">
+                    </div>
+                    <div>
+                        <h5 class="text-xl font-bold text-brand-dark mb-2">洗練されたデザイン、家族に寄り添うお墓</h5>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            高さを抑えた安定感のある形状と、優美な曲線が織りなす洋風墓石。お好きな文字や花のレリーフなどをあしらいやすく、あなたらしさを表現することができます。芝生や緑の空と最高に調和する美しさです。
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold mr-2"></i>明るく洗練されたモダンデザイン</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-brand-gold mr-2"></i>想い出のメッセージや彫刻が映えるフォルム</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 価格表セクション -->
+    <section class="bg-white py-12 px-4 border-y border-gray-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+                <span class="text-brand-gold font-bold text-lg tracking-widest block mb-1">PRICE PLAN</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-brand-dark border-b-2 border-brand-gold pb-3 inline-block">
+                    料金のご案内
+                </h3>
+            </div>
+
+            <!-- 価格詳細カード -->
+            <div class="bg-brand-light rounded-xl overflow-hidden shadow-inner p-6 md:p-8 border border-gray-100 max-w-2xl mx-auto">
+                <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-300">
+                    <span class="text-lg md:text-xl font-bold text-brand-dark">1.5㎡ゆとり墓所特別セット</span>
+                    <span class="bg-brand-gold text-brand-dark text-xs font-bold px-3 py-1 rounded">先着順・お早めに</span>
+                </div>
+
+                <div class="space-y-4 mb-6">
+                    <div class="flex justify-between text-base">
+                        <span class="text-gray-600">永代使用料（土地使用権利）</span>
+                        <span class="font-semibold text-right">含まれています</span>
+                    </div>
+                    <div class="flex justify-between text-base">
+                        <span class="text-gray-600">墓石工事代（高級白御影石）</span>
+                        <span class="font-semibold text-right">含まれています</span>
+                    </div>
+                    <div class="flex justify-between text-base">
+                        <span class="text-gray-600">基本家名彫刻代</span>
+                        <span class="font-semibold text-right">含まれています</span>
+                    </div>
+                    <div class="flex justify-between text-base">
+                        <span class="text-gray-600">消費税（10％相当）</span>
+                        <span class="font-semibold text-right">含まれています</span>
+                    </div>
+                </div>
+
+                <div class="text-center bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <span class="text-xs text-gray-500 block mb-1">これらすべてを含んで</span>
+                    <div class="text-3xl md:text-4xl font-bold text-brand-dark">
+                        一式 <span class="text-brand-accent text-4xl md:text-5xl">165.5</span>万円〜<span class="text-base text-gray-700">(税込)</span>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2">※年間管理費が別途必要となります。詳しくは現地係員までお尋ねください。</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-6">
+                <img src="price_table.jpg" alt="価格一覧図イメージ" class="mx-auto rounded-lg shadow-sm border border-gray-200 max-w-full md:max-w-md" onerror="this.style.display='none';">
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 霊園全体区画図 & 特徴 -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+            <span class="text-brand-gold font-bold text-lg tracking-widest block mb-1">FEATURES</span>
+            <h3 class="text-2xl md:text-3xl font-bold text-brand-dark border-b-2 border-brand-gold pb-3 inline-block">
+                我孫子霊園が選ばれる理由
+            </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- 特徴テキスト -->
+            <div class="flex flex-col justify-center space-y-4">
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-brand-dark">
+                    <h4 class="font-bold text-brand-dark text-lg mb-1">自然豊かな高台に広がる抜群のロケーション</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        四季の風が心地よく吹き抜ける開放的な空間です。陽当たりの良さを確保した設計で、園内には常に明るい陽光が満ちています。
+                    </p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-brand-dark">
+                    <h4 class="font-bold text-brand-dark text-lg mb-1">手入れの行き届いた植栽と、ゆったりとした参道</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        常にきれいに整えられた参道はフラット設計で、ご高齢の方やベビーカーをご利用のご家族でも歩きやすく、安心してお参りいただけます。
+                    </p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-brand-dark">
+                    <h4 class="font-bold text-brand-dark text-lg mb-1">手ぶらで、いつでも気軽にお参り可能</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        管理事務所にて、お供え用の美しい生花や使い切りのお線香をご用意しております。思い立ったその日にふらりとお立ち寄りください。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 区画図イメージプレースホルダー -->
+            <div class="bg-white p-4 rounded-xl shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <h4 class="text-brand-dark font-bold mb-2 text-center text-lg">霊園内・配置マップ</h4>
+                    <p class="text-xs text-gray-500 mb-4 text-center">陽当たりの良いゆとり墓地を多数ご用意しております</p>
+                </div>
+                <div class="relative bg-brand-light rounded-lg flex items-center justify-center p-4">
+                    <img src="blocks_map.jpg" alt="霊園全体区画図" class="w-full h-auto object-contain rounded" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1590073844006-33379778ae09?auto=format&fit=crop&q=80&w=600';">
+                    <span class="absolute top-2 right-2 bg-brand-dark text-white text-[11px] font-semibold px-2 py-0.5 rounded">
+                        1.5㎡ゆとり区画 好評案内中
+                    </span>
+                </div>
+                <p class="text-xs text-gray-400 mt-2 text-center">※実際の区画のご見学は現地係員が詳しくご案内します。</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-6">
+            <img src="seasons.png" alt="季節ごとの霊園の風景" class="mx-auto max-w-full rounded-lg" onerror="this.style.display='none';">
+        </div>
+    </section>
+
+    <!-- 6. 改葬（お墓の引っ越し）を検討している方へ -->
+    <section class="bg-brand-dark text-white py-12 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+                <span class="text-brand-gold font-bold text-lg tracking-widest block mb-1">RE-BURIAL</span>
+                <h3 class="text-2xl md:text-3xl font-bold border-b-2 border-brand-gold pb-3 inline-block">
+                    改葬（お墓のお引っ越し）をお考えの方へ
+                </h3>
+            </div>
+
+            <div class="bg-white/5 rounded-xl p-6 md:p-8 backdrop-blur-sm border border-white/10">
+                <h4 class="text-lg md:text-xl font-bold text-brand-gold mb-4 text-center">
+                    「遠くの故郷にあるお墓を、通いやすい場所に移動したい」
+                </h4>
+                <p class="text-gray-200 text-sm md:text-base leading-relaxed mb-6">
+                    「実家のお墓が遠くてお参りに行くのが難しい」「年齢的にお墓の管理が辛くなってきた」といった理由で、我孫子霊園にお墓を移設（改葬）される方が増えています。<br>
+                    手続きに必要な書類の作成や、現在の墓地の整地、新しく我孫子霊園に建てる手順など、専門知識を持ったスタッフがすべて丁寧にお手伝いいたします。
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mt-4">
+                    <div class="bg-brand-dark/50 p-4 rounded border border-brand-gold/20">
+                        <span class="text-brand-gold font-bold block mb-1">1. 無料での事前相談</span>
+                        費用や手続きの流れを最初から明確にご案内いたします。
+                    </div>
+                    <div class="bg-brand-dark/50 p-4 rounded border border-brand-gold/20">
+                        <span class="text-brand-gold font-bold block mb-1">2. 面倒な行政手続きサポート</span>
+                        受入証明書の発行や、各種手続きについて的確にアドバイス。
+                    </div>
+                    <div class="bg-brand-dark/50 p-4 rounded border border-brand-gold/20">
+                        <span class="text-brand-gold font-bold block mb-1">3. 新しい墓石デザインの提案</span>
+                        伝統的なお墓から最新のデザインまで、納得のご提案。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. アクセス・周辺環境 -->
+    <section class="py-12 px-4 max-w-4xl mx-auto" id="access">
+        <div class="text-center mb-8">
+            <span class="text-brand-gold font-bold text-lg tracking-widest block mb-1">ACCESS</span>
+            <h3 class="text-2xl md:text-3xl font-bold text-brand-dark border-b-2 border-brand-gold pb-3 inline-block">
+                交通アクセス・現地案内
+            </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 items-stretch">
+            <!-- 住所と経路説明 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-4 pb-2 border-b border-gray-200">
+                        我孫子霊園（あびこれいえん）
+                    </h4>
+                    <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                        <span class="font-bold">■ 住所：</span><br>
+                        〒270-1137 千葉県我孫子市岡発戸字榎戸1380
+                    </p>
+                    <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                        <span class="font-bold">■ 電車・お車でお越しの場合：</span><br>
+                        JR常磐線「天王台駅」南口よりお車（タクシー）で約5分。
+                    </p>
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        東関東の穏やかな光にあふれた自然豊かな高台。近隣エリア（松戸市・柏市・流山市・印西市など）からもお車でアクセスしやすい好立地です。
+                    </p>
+                </div>
+
+                <!-- Google マップ ルート案内ボタン -->
+                <div class="mt-6 pt-4 border-t border-gray-100">
+                    <a href="https://maps.app.goo.gl/xqMossBK4g2bLoKQ8" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center bg-brand-gold hover:bg-brand-goldhover text-brand-dark font-bold py-3 px-4 rounded-lg shadow-sm transition-all duration-300">
+                        <i data-lucide="map-pin" class="w-5 h-5 mr-2"></i>
+                        Googleマップでルート案内を見る
+                    </a>
+                </div>
+            </div>
+
+            <!-- Google マップ埋め込み -->
+            <div class="rounded-xl overflow-hidden shadow-md border border-gray-200 min-h-[300px]">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1070.2294970295616!2d140.05598125493353!3d35.86096105118873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x602278346e4e3f05%3A0xddaa6ccddbfe76b0!2z44CSMjcwLTExMzcg5Y2D6JGJ55yM5oiR5a2r5a2Q5biC5bKh55m65oi45oiR5a2r5a2Q6ZyK5ZyS!5e1!3m2!1sja!2sjp!4v1783911319878!5m2!1sja!2sjp" class="w-full h-full min-h-[300px]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+        </div>
+
+        <!-- ご来園時のご提示キャンペーン（赤地に白文字で目立つアピールエリア） -->
+        <div class="bg-brand-accent text-white rounded-xl p-6 md:p-8 shadow-lg text-center my-8">
+            <h4 class="text-xl md:text-2xl font-bold mb-4 flex items-center justify-center gap-2 flex-wrap">
+                <i data-lucide="info" class="w-6 h-6 animate-pulse"></i>
+                ご来園の皆様へ大切なご案内
+            </h4>
+            <p class="text-base md:text-lg font-medium leading-relaxed max-w-2xl mx-auto">
+                ご来園の際は霊園入口右側の<span class="underline decoration-yellow-400 decoration-2 underline-offset-4 font-bold text-yellow-300">「ご見学受付所」</span>にお寄りいただき、<span class="underline decoration-yellow-400 decoration-2 underline-offset-4 font-bold text-yellow-300">このページのトップ画面</span>をご提示ください。現地係員が霊園内をご案内させていただきます。
+            </p>
+        </div>
+    </section>
+
+    <!-- 8. よくある質問 -->
+    <section class="bg-white py-12 px-4 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+                <span class="text-brand-gold font-bold text-lg tracking-widest block mb-1">Q&A</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-brand-dark border-b-2 border-brand-gold pb-3 inline-block">
+                    よくあるご質問
+                </h3>
+            </div>
+
+            <div class="space-y-4 max-w-3xl mx-auto">
+                <!-- 質問1 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden bg-brand-light">
+                    <button class="w-full text-left p-5 font-bold flex justify-between items-center text-brand-dark transition-colors duration-200 hover:bg-gray-100 text-base" onclick="toggleFaq(1)">
+                        <span>Q1. 宗教・宗派が違っていてもお墓を購入できますか？</span>
+                        <i data-lucide="chevron-down" id="faq-icon-1" class="w-5 h-5 transition-transform duration-300 text-brand-gold"></i>
+                    </button>
+                    <div id="faq-ans-1" class="hidden p-5 border-t border-gray-200 bg-white text-gray-600 text-sm leading-relaxed">
+                        はい、まったく問題ありません。我孫子霊園は、宗教・宗旨・宗派を一切問わず、どなたでもお申込みいただける霊園となっております。在来仏教だけでなく、神道やキリスト教、無宗教の方でも同一条件で安心してご利用いただけます。
+                    </div>
+                </div>
+
+                <!-- 質問2 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden bg-brand-light">
+                    <button class="w-full text-left p-5 font-bold flex justify-between items-center text-brand-dark transition-colors duration-200 hover:bg-gray-100 text-base" onclick="toggleFaq(2)">
+                        <span>Q2. 「ゆとり墓地」とはどのような特徴があるお墓ですか？</span>
+                        <i data-lucide="chevron-down" id="faq-icon-2" class="w-5 h-5 transition-transform duration-300 text-brand-gold"></i>
+                    </button>
+                    <div id="faq-ans-2" class="hidden p-5 border-t border-gray-200 bg-white text-gray-600 text-sm leading-relaxed">
+                        一般的なお墓は、お隣のお墓と接して隙間なく並んでいますが、「ゆとり墓地」は前後左右に特別な空間（スペース）を設けて設計されています。これにより、お隣のお墓を気にすることなく、圧迫感のない開放的な空間で心穏やかにお参りしていただけるのが最大の特徴です。
+                    </div>
+                </div>
+
+                <!-- 質問3 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden bg-brand-light">
+                    <button class="w-full text-left p-5 font-bold flex justify-between items-center text-brand-dark transition-colors duration-200 hover:bg-gray-100 text-base" onclick="toggleFaq(3)">
+                        <span>Q3. 現地見学には予約が必要ですか？</span>
+                        <i data-lucide="chevron-down" id="faq-icon-3" class="w-5 h-5 transition-transform duration-300 text-brand-gold"></i>
+                    </button>
+                    <div id="faq-ans-3" class="hidden p-5 border-t border-gray-200 bg-white text-gray-600 text-sm leading-relaxed">
+                        予約なしでの直接のご来園も歓迎しております。ただ、ご希望の日時にスムーズなご案内をお約束するため、お越しになる前にお気軽にお電話にてご一報いただけますと、より確実に対応可能です（直通電話: 080-1178-1515）。
+                    </div>
+                </div>
+
+                <!-- 質問4 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden bg-brand-light">
+                    <button class="w-full text-left p-5 font-bold flex justify-between items-center text-brand-dark transition-colors duration-200 hover:bg-gray-100 text-base" onclick="toggleFaq(4)">
+                        <span>Q4. 墓石工事代のほかに追加費用はかかりますか？</span>
+                        <i data-lucide="chevron-down" id="faq-icon-4" class="w-5 h-5 transition-transform duration-300 text-brand-gold"></i>
+                    </button>
+                    <div id="faq-ans-4" class="hidden p-5 border-t border-gray-200 bg-white text-gray-600 text-sm leading-relaxed">
+                        本プランに提示しております「165.5万円(税込)」は、永代使用料、墓石本体（高級白御影石）、基本家名彫刻代、標準取付工事代をすべて含んだ一式価格です。ただし、お墓購入後に毎年頂戴する「年間管理費」が別途必要となります。区画によって金額が異なりますので、詳細は現地係員がお見積書を作成し丁寧にご説明いたします。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. 経営主体 & 霊園概要 -->
+    <section class="bg-brand-dark text-white py-12 px-4 border-t border-brand-gold/30">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-xl md:text-2xl font-bold mb-6 text-center text-brand-gold">我孫子霊園 概要</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs md:text-sm text-gray-300">
+                <ul class="space-y-3">
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 住所</span> <span>千葉県我孫子市岡発戸字榎戸1380</span></li>
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 経営主体</span> <span>宗教法人 本妙寺</span></li>
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 墓地経営許可</span> <span>千葉県知事8-3号</span></li>
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 開発許可番号</span> <span>県宅指令第6号の11</span></li>
+                </ul>
+                <ul class="space-y-3">
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 総面積</span> <span>17,749㎡</span></li>
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 新規開発面積</span> <span>7,035㎡</span></li>
+                    <li class="flex"><span class="font-bold text-white w-28 shrink-0">■ 申込資格</span> <span>宗教・宗旨を問わず、どなたでもお申込みいただけます。</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. フッター -->
+    <footer class="bg-black text-gray-400 py-6 text-center px-4 pb-28 md:pb-24">
+        <p class="text-xs mb-2">© 我孫子霊園 All Rights Reserved. (経営主体：宗教法人 本妙寺)</p>
+        <p class="text-[10px] text-gray-600">※掲載の価格や画像は施工仕様・仕上がり・気候状況等により異なる場合がございます。詳細は現地案内会にてご確認ください。</p>
+    </footer>
+
+    <!-- スマホ・タブレット用 フローティング電話掛けコンタクトバー（高齢者に最適化） -->
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-4px_10px_rgba(0,0,0,0.1)] z-40 p-4">
+        <div class="max-w-md mx-auto flex gap-3">
+            <a href="tel:080-1178-1515" class="flex-1 flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-4 rounded-xl text-lg shadow-md transition-all active:scale-95">
+                <i data-lucide="phone-call" class="w-6 h-6 mr-2 animate-bounce"></i>
+                <span class="tracking-wide">係員直通に電話する</span>
+            </a>
+        </div>
+        <p class="text-center text-[11px] text-gray-500 mt-2">
+            お気軽にお問い合わせください：<span class="font-bold text-brand-dark">080-1178-1515</span>（9:00〜17:00 雨天実施）
+        </p>
+    </div>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Lucideアイコンの初期化
+        lucide.createIcons();
+
+        // 墓石切り替えシミュレーター用
+        function switchStone(type) {
+            const btnJap = document.getElementById('btn-japanese');
+            const btnWes = document.getElementById('btn-western');
+            const contentJap = document.getElementById('stone-japanese');
+            const contentWes = document.getElementById('stone-western');
+
+            if (type === 'japanese') {
+                // ボタン表示切り替え
+                btnJap.className = "flex-1 py-3 text-center rounded-full font-bold transition-all duration-300 text-sm md:text-base bg-brand-dark text-white shadow-sm";
+                btnWes.className = "flex-1 py-3 text-center rounded-full font-bold transition-all duration-300 text-sm md:text-base text-gray-500 hover:text-brand-dark";
+                // コンテンツ切り替え
+                contentJap.classList.remove('hidden');
+                contentWes.classList.add('hidden');
+            } else {
+                // ボタン表示切り替え
+                btnWes.className = "flex-1 py-3 text-center rounded-full font-bold transition-all duration-300 text-sm md:text-base bg-brand-dark text-white shadow-sm";
+                btnJap.className = "flex-1 py-3 text-center rounded-full font-bold transition-all duration-300 text-sm md:text-base text-gray-500 hover:text-brand-dark";
+                // コンテンツ切り替え
+                contentWes.classList.remove('hidden');
+                contentJap.classList.add('hidden');
+            }
+        }
+
+        // アコーディオン (FAQ) 制御
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faq-ans-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                ans.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>l>
