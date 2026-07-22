@@ -331,6 +331,61 @@
         </div>
     </section>
 
+    <!-- 6.5 我孫子市岡発戸 天気予報 ＆ 家族・友人共有ボタン（アクセス直前に配置） -->
+    <section class="py-8 px-4 max-w-4xl mx-auto">
+        <div class="bg-white rounded-xl p-6 md:p-8 shadow-md border border-gray-200">
+            <!-- 我孫子市岡発戸の天気予報ボタン -->
+            <div class="mb-6 pb-6 border-b border-gray-200 text-center">
+                <h4 class="text-base md:text-lg font-bold text-brand-dark mb-2 flex items-center justify-center gap-2">
+                    <i data-lucide="cloud-sun" class="w-5 h-5 text-amber-500"></i>
+                    ご見学・お参り前の事前確認に
+                </h4>
+                <p class="text-xs md:text-sm text-gray-600 mb-4">現地（我孫子市岡発戸）の最新天気予報・雨雲レーダーをご確認いただけます。</p>
+                
+                <a href="https://tenki.jp/forecast/3/15/4510/12222/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-sky-600 hover:bg-sky-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-sm transition-all duration-300 w-full md:w-auto text-base">
+                    <i data-lucide="sun" class="w-5 h-5 mr-2 text-yellow-300"></i>
+                    <span>我孫子市岡発戸の天気予報を見る (tenki.jp)</span>
+                    <i data-lucide="external-link" class="w-4 h-4 ml-2 opacity-80"></i>
+                </a>
+            </div>
+
+            <!-- 家族や友人とLINE・SMS共有ボタン -->
+            <div class="text-center">
+                <h4 class="text-base md:text-lg font-bold text-brand-dark mb-2 flex items-center justify-center gap-2">
+                    <i data-lucide="share-2" class="w-5 h-5 text-brand-gold"></i>
+                    ご家族・ご友人にこのページを共有する
+                </h4>
+                <p class="text-xs md:text-sm text-gray-600 mb-4">お墓参りやご見学の相談に、LINEやSMS（ショートメッセージ）で簡単にお知らせできます。</p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-3 max-w-lg mx-auto">
+                    <!-- LINEで共有 -->
+                    <button onclick="shareLINE()" class="flex-1 flex items-center justify-center bg-[#06C755] hover:bg-[#05b34c] text-white font-bold py-3 px-4 rounded-xl shadow-sm transition-all text-sm md:text-base">
+                        <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 5.82 2 10.53c0 4.23 3.61 7.78 8.49 8.43.33.07.78.22.89.5.1.26.07.67.03.93-.05.34-.23 1.34-.26 1.63-.04.45-.2.88.77.48 3.87-1.6 5.58-4.7 5.58-4.7 2.76-1.55 4.5-4.47 4.5-7.77C22 5.82 17.52 2 12 2zm-4.32 11.23h-1.5v-4.5h1.5v4.5zm2.8 0h-1.5v-4.5h1.5v4.5zm5.12 0h-1.32l-2.02-2.73v2.73h-1.5v-4.5h1.32l2.02 2.73v-2.73h1.5v4.5z"/>
+                        </svg>
+                        <span>LINEで送る</span>
+                    </button>
+
+                    <!-- SMSで共有 -->
+                    <button onclick="shareSMS()" class="flex-1 flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-xl shadow-sm transition-all text-sm md:text-base">
+                        <i data-lucide="message-square" class="w-5 h-5 mr-2"></i>
+                        <span>SMS(メール)で送る</span>
+                    </button>
+
+                    <!-- URLコピー -->
+                    <button onclick="copyPageURL()" class="flex-1 flex items-center justify-center bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-4 rounded-xl shadow-sm transition-all text-sm md:text-base">
+                        <i data-lucide="copy" class="w-5 h-5 mr-2"></i>
+                        <span>URLをコピー</span>
+                    </button>
+                </div>
+                <!-- コピー完了メッセージ -->
+                <div id="copy-message" class="hidden text-emerald-700 font-bold text-xs mt-3 bg-emerald-50 py-1 px-3 rounded inline-block border border-emerald-200">
+                    ✓ ページのURLをコピーしました！メッセージに貼り付けてご使用ください。
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 7. アクセス・周辺環境 -->
     <section class="py-12 px-4 max-w-4xl mx-auto" id="access">
         <div class="text-center mb-8">
@@ -525,6 +580,46 @@
             } else {
                 ans.classList.add('hidden');
                 icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // --- ページの共有機能 (LINE / SMS / URLコピー) ---
+        const pageTitle = "【公式】我孫子霊園 | 1.5㎡ゆとり墓所 新発売";
+        
+        function getShareURL() {
+            return window.location.href;
+        }
+
+        function shareLINE() {
+            const url = getShareURL();
+            const text = encodeURIComponent(pageTitle + "\n" + url);
+            window.open(`https://line.me/R/msg/text/?${text}`, '_blank');
+        }
+
+        function shareSMS() {
+            const url = getShareURL();
+            const body = encodeURIComponent(`${pageTitle}\n${url}`);
+            // iOS / Android 互換の SMS スキーマ
+            window.location.href = `sms:?body=${body}`;
+        }
+
+        function copyPageURL() {
+            const tempInput = document.createElement('input');
+            tempInput.value = getShareURL();
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            
+            try {
+                document.execCommand('copy');
+                const msg = document.getElementById('copy-message');
+                msg.classList.remove('hidden');
+                setTimeout(() => {
+                    msg.classList.add('hidden');
+                }, 4000);
+            } catch (err) {
+                console.error('URLコピーに失敗しました', err);
+            } finally {
+                document.body.removeChild(tempInput);
             }
         }
     </script>
